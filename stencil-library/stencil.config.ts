@@ -4,21 +4,11 @@ export const config: Config = {
   namespace: 'stencil-library',
   outputTargets: [
     {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
-    {
       type: 'dist-custom-elements',
-    },
-    {
-      type: 'docs-readme',
-    },
-    {
-      type: 'www',
-      serviceWorker: null, // disable service workers
+      customElementsExportBehavior: 'single-export-module',
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
 };
