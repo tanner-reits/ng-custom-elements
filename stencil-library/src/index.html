@@ -9,6 +9,13 @@
     <script nomodule src="/build/stencil-library.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <my-component size="small" id="watcherFails"></my-component>
   </body>
+
+  <script>
+    document.querySelector('my-component').size = 'large';
+    setTimeout(() => {
+      // Changes to `size` here will trigger a watcher callback
+    }, 1000);
+  </script>
 </html>

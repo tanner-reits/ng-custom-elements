@@ -7,6 +7,14 @@ export const config: Config = {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'single-export-module',
     },
+    {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+    },
+    {
+      type: 'www',
+      serviceWorker: null, // disable service workers
+    },
   ],
   testing: {
     browserHeadless: 'new',

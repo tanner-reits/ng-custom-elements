@@ -1,5 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Element, Component, Prop, h, Watch } from '@stencil/core';
 
 @Component({
   tag: 'my-component',
@@ -7,26 +6,15 @@ import { format } from '../../utils/utils';
   shadow: true,
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
+  @Element() el: HTMLElement;
 
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
-
-  /**
-   * The last name
-   */
-  @Prop() last: string;
-
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
+  @Prop({ reflect: true }) size: string;
+  @Watch('size')
+  onSizeChange(newVal: string, oldVal: string) {
+    console.log('Size changed', newVal, oldVal);
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return <div>{this.el.getAttribute('id')}</div>;
   }
 }
